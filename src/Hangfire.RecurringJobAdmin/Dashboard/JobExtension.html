@@ -31,11 +31,11 @@
 
                     <div class="modal-footer">
                         <button class="modal-default-button btn btn-danger pull-left" @click="closeModal">
-                            Close
+                            关闭
                         </button>
                         <slot name="footer">
                             <button class="modal-default-button btn btn-success" @click="closeModal">
-                                Save
+                                保存
                             </button>
                         </slot>
                     </div>
@@ -50,42 +50,42 @@
     <modal v-if="showModal" @close="closeModal">
 
         <form slot="body" id="formJob">
-
             <div class="form-group">
-                <label for="jobId">Job Id</label>
-                <input type="text" class="form-control" v-model="job.Id" id="jobId" name="jobId" aria-describedby="emailHelp" placeholder="Enter Job Id">
+                <label for="jobId" >任务Id</label>
+                    <input type="text" class="form-control" v-model="job.Id" id="jobId" name="jobId" aria-describedby="emailHelp" placeholder="输入任务Id(唯一)">
+             
             </div>
             <div class="form-group">
-                <label for="cron">Cron</label>
-                <cron-expression-input :value="job.Cron" v-on:input="job.Cron = $event.detail.value" color="d58512" />
+                <label for="cron" >Cron</label>
+                    <cron-expression-input :value="job.Cron" v-on:input="job.Cron = $event.detail.value" color="d58512" />
+           
             </div>
-
             <div class="form-group">
-                <label for="cron">Time Zone</label>
-                <select id="timezoneid" class="form-control" v-model="job.TimeZoneId" name="cron" placeholder="Enter the Time Zone">
+                <label for="cron">时区</label>
+                <select id="timezoneid" class="form-control" v-model="job.TimeZoneId" name="cron" placeholder="输入时区">
                     <option v-for="(item, index) in timeZones" :key="index" :value="item.Item1">{{item.Item2}}</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="class">Class</label>
+                <label for="class">类名</label>
                 <input type="text" class="form-control" v-model="job.Class" name="class" aria-describedby="class" id="class" placeholder="Enter Class Name">
-                <small id="class" class="form-text text-muted">Please provider path complete about your class example: Hangfire.RecurringJob.MyClass</small>
+                <small id="class" class="form-text text-muted">请填写有关您的类的提供程序路径示例：HangFire.RecurringJob.MyClass</small>
             </div>
 
             <div class="form-group">
-                <label for="method">Method</label>
-                <input type="text" class="form-control" v-model="job.Method" id="method" name="method" placeholder="Enter Method Name">
+                <label for="method">方法</label>
+                <input type="text" class="form-control" v-model="job.Method" id="method" name="method" placeholder="输入方法名称">
             </div>
 
             <div class="form-group">
-                <label for="queue">Queue</label>
-                <input type="text" class="form-control" v-model="job.Queue" name="queue" id="queue" placeholder="Enter Queue Name">
+                <label for="queue">队列</label>
+                <input type="text" class="form-control" v-model="job.Queue" name="queue" id="queue" placeholder="输入队列名称">
             </div>
 
             <div class="form-group">
                 <p v-if="errors.length> 0">
-                    <b style="color:red">Please correct the following error(s):</b>
+                    <b style="color:red">请更正以下错误(s):</b>
                     <ul>
                         <li v-for="error in errors" style="color:red">{{ error }}</li>
                     </ul>
@@ -95,7 +95,7 @@
 
         <div slot="footer">
             <button class="btn btn-success" @click="addJob">
-                Save
+                保存
             </button>
         </div>
 
@@ -104,8 +104,8 @@
 
     <div class="row">
         <div class="col-md-12" style="margin-top: 30px">
-            <h1 class="page-header">Recurring Jobs <span class="badge badge-warning">{{getItems.length}}</span></h1>
-            <button type="button" class="btn btn-primary" style="margin-bottom: 20px;" @click="OpenModal">Add new Job</button>
+            <h1 class="page-header">周期性作业<span class="badge badge-warning">{{getItems.length}}</span></h1>
+            <button type="button" class="btn btn-primary" style="margin-bottom: 20px;" @click="OpenModal">添加新作业</button>
             <div class="table-responsive">
                 <table class="table">
 
@@ -113,14 +113,14 @@
                         <tr>
                             <th>Id</th>
                             <th>Cron</th>
-                            <th>Queue</th>
-                            <th>State</th>
-                            <th>Class</th>
-                            <th>Method</th>
-                            <th>TimeZone</th>
-                            <th>Last Execution</th>
-                            <th>Next Execution</th>
-                            <th>Options</th>
+                            <th>队列</th>
+                            <th>状态</th>
+                            <th>类</th>
+                            <th>方法</th>
+                            <th>时区</th>
+                            <th>上次执行</th>
+                            <th>下一次执行</th>
+                            <th>选项</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -129,8 +129,8 @@
                             <td>{{job.Cron}}</td>
                             <td>{{job.Queue}}</td>
                             <td>
-                                <span v-if="job.JobState == 'Running'" class="label label-success">{{job.JobState}}</span>
-                                <span v-if="job.JobState == 'Stopped'" class="label label-danger">{{job.JobState}}</span>
+                                <span v-if="job.JobState == 'Running'" class="label label-success">运行中</span>
+                                <span v-if="job.JobState == 'Stopped'" class="label label-danger">停止</span>
                             </td>
                             <td>{{job.Class}}</td>
                             <td>{{job.Method}}</td>
@@ -204,7 +204,7 @@
         },
         data() {
             return {
-                title: 'Add New Job',
+                title: '添加新作业',
                 jobs: null,
                 showModal: false,
                 errors: [],
@@ -233,9 +233,8 @@
                     .then(res => (this.jobs = res.data))
             },
             GetJob(_Id) {
-                this.title = 'Edit Job';
+                this.title = '编辑任务';
                 axios.get('JobConfiguration/GetJob?Id=' + _Id).then(response => {
-
                     if (response.data != null) {
                         this.showModal = true;
                         this.job.Id = response.data.Object.Id;
@@ -355,25 +354,25 @@
                 this.showModal = false;
             },
             OpenModal() {
-                this.title = 'Add New Job';
+                this.title = '新任务';
                 this.showModal = true;
             },
             checkForm: function (e) {
                 this.errors = [];
                 if (!this.job.Id) {
-                    this.errors.push("Job Id is required.");
+                    this.errors.push("作业ID是必填项.");
                 }
                 if (!this.job.Cron) {
-                    this.errors.push("Cron is required.");
+                    this.errors.push("Cron.必填");
                 }
                 if (!this.job.Class) {
-                    this.errors.push("Class is required.");
+                    this.errors.push("类.必填");
                 }
                 if (!this.job.Method) {
-                    this.errors.push("Methodo is required.");
+                    this.errors.push("方法 .必填");
                 }
                 if (!this.job.Queue) {
-                    this.errors.push("Queue is required.");
+                    this.errors.push("队列 .必填");
                 }
 
                 if (!this.errors.length) return true;
@@ -404,7 +403,7 @@
                 else return null;
             },
             getPageCount: function () {
-                return Math.ceil(this.jobs.length / this.pagination.parPage);
+                return Math.ceil((this.jobs || []).length / this.pagination.parPage);
             }
         }
     });

@@ -23,7 +23,7 @@ namespace Hangfire.RecurringJobAdmin.Pages
             if (!JobAgent.IsValidJobId(jobId))
             {
                 response.Status = false;
-                response.Message = $"The Job Id {jobId} not found";
+                response.Message = $"找不到作业ID:{jobId}";
 
                 await context.Response.WriteAsync(JsonConvert.SerializeObject(response));
 

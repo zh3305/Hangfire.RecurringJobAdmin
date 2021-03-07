@@ -13,7 +13,7 @@ namespace Hangfire.RecurringJobAdmin
 
         public readonly int _from = 0;
         public readonly int _count = 2000;
-        public readonly string _reason = "It is not allowed to perform multiple same tasks.";
+        public readonly string _reason = "不允许执行多个相同的任务.";
         public readonly JobState _jobState = JobState.DeletedState;
         private string _methodName;
 

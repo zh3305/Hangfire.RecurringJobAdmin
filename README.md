@@ -1,4 +1,4 @@
-# Hangfire.RecurringJobAdmin
+# Hangfire.RecurringJobAdmin(中文本地化)
 [![NuGet](https://buildstats.info/nuget/Hangfire.RecurringJobAdmin)](https://www.nuget.org/packages/Hangfire.RecurringJobAdmin/)
 [![Build status](https://ci.appveyor.com/api/projects/status/u2xrias2vk727beg/branch/master?svg=true)](https://ci.appveyor.com/project/bamotav/hangfire-recurringjobadmin/branch/master)
 [![Build Status](https://github.com/bamotav/Hangfire.RecurringJobAdmin/workflows/CI-HRJ/badge.svg)](https://github.com/bamotav/Hangfire.RecurringJobAdmin/actions)
@@ -94,7 +94,7 @@ GlobalConfiguration.Configuration.UseSqlServerStorage("HangfireConnection").UseR
 
 ## Credits
  * Braulio Alvarez
- 
+
 ## Donation
 If this project help you reduce time to develop, you can give me a cup of coffee :) 
 

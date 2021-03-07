@@ -6,7 +6,7 @@ namespace Hangfire.RecurringJobAdmin.Pages
 {
     internal sealed class JobsStoppedPage : PageBase
     {
-        public const string Title = "Stopped Jobs";
+        public const string Title = "已停止的作业";
         public const string PageRoute = "/jobs/stopped";
 
         private static readonly string PageHtml;

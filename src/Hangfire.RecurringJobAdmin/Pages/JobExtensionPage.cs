@@ -9,7 +9,7 @@ namespace Hangfire.RecurringJobAdmin.Pages
 {
     internal sealed class JobExtensionPage : PageBase
     {
-        public const string Title = "Job Configuration";
+        public const string Title = "作业配置";
         public const string PageRoute = "/JobConfiguration";
 
         private static readonly string PageHtml;

@@ -45,7 +45,7 @@ namespace Hangfire.RecurringJobAdmin.Pages
             if (!Utility.IsValidSchedule(job.Cron))
             {
                 response.Status = false;
-                response.Message = "Invalid CRON";
+                response.Message = "无效的Cron";
 
                 await context.Response.WriteAsync(JsonConvert.SerializeObject(response));
 
@@ -68,12 +68,12 @@ namespace Hangfire.RecurringJobAdmin.Pages
 
                 return;
             }
-          
+
 
             if (!StorageAssemblySingleton.GetInstance().IsValidType(job.Class))
             {
                 response.Status = false;
-                response.Message = "The Class not found";
+                response.Message = "找不到类";
 
                 await context.Response.WriteAsync(JsonConvert.SerializeObject(response));
 
@@ -83,7 +83,7 @@ namespace Hangfire.RecurringJobAdmin.Pages
             if (!StorageAssemblySingleton.GetInstance().IsValidMethod(job.Class, job.Method))
             {
                 response.Status = false;
-                response.Message = "The Method not found";
+                response.Message = "找不到该方法";
 
                 await context.Response.WriteAsync(JsonConvert.SerializeObject(response));
 
@@ -92,10 +92,9 @@ namespace Hangfire.RecurringJobAdmin.Pages
 
 
             var methodInfo = StorageAssemblySingleton.GetInstance().currentAssembly
-                                                                                .Where(x => x?.GetType(job.Class)?.GetMethod(job.Method) != null)
-                                                                                .FirstOrDefault()
-                                                                                .GetType(job.Class)
-                                                                                .GetMethod(job.Method);
+                .FirstOrDefault(x => x?.GetType(job.Class)?.GetMethod(job.Method) != null)
+                ?.GetType(job.Class)
+                .GetMethod(job.Method);
 
             _recurringJobRegistry.Register(
                       job.Id,

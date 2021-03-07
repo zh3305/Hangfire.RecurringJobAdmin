@@ -1,14 +1,16 @@
 ﻿/** Main */
 #app {
     position: relative !important;
-    left: -229px !important;
+    /* left: -229px !important; */
 }
 
 #app > div > div {
     margin-top: 30px !important;
-    width: 1626px !important
+    /* width: 1626px !important */
 }
-
+.modal-header {
+    padding: 10px 0px 0px 10px !important;
+}
 /* Modal */
 .modal-mask {
     position: fixed;
@@ -28,9 +30,10 @@
 }
 
 .modal-container {
-    width: 500px;
+    /* width: 500px; */
+    width: 80%;
     margin: 0px auto;
-    padding: 20px 30px;
+    /* padding: 20px 30px; */
     background-color: #fff;
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
@@ -44,7 +47,7 @@
 }
 
 .modal-body {
-    margin: 20px 0;
+    /* margin: 20px 0; */
 }
 
 .modal-default-button {

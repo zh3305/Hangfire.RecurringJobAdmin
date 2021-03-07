@@ -2,6 +2,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using static System.TimeZoneInfo;
 
 namespace Hangfire.Sample.Library
 {
@@ -13,7 +14,7 @@ namespace Hangfire.Sample.Library
             Console.WriteLine("Check File Exists");
         }
 
-        [RecurringJob("*/1 * * * *", "default", RecurringJobId = "RunDelayJob")]
+        [RecurringJob("*/1 * * * *", "default", TimeZone = "China Standard Time" /* (UTC+08:00) 北京，重庆，香港特别行政区，乌鲁木齐 */, RecurringJobId = "RunDelayJob")]
         [DisableConcurrentlyJobExecution(nameof(RunDelayJob), jobState: JobState.EnqueuedState)]
         public async Task RunDelayJob()
         {

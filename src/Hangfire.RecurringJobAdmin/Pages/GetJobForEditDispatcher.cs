@@ -43,7 +43,7 @@ namespace Hangfire.RecurringJobAdmin.Pages
             if (recurringJob == null)
             {
                 response.Status = false;
-                response.Message = "Job not found";
+                response.Message = "找不到作业";
 
                 await conterecurringJobt.Response.WriteAsync(JsonConvert.SerializeObject(response));
 

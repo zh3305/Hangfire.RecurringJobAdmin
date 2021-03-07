@@ -87,7 +87,7 @@ namespace Hangfire.RecurringJobAdmin
             DashboardRoutes.Routes.Add("/DataConfiguration/GetTimeZones", new GetTimeZonesDispatcher());
 
             DashboardMetrics.AddMetric(TagDashboardMetrics.JobsStoppedCount);
-            JobsSidebarMenu.Items.Add(page => new MenuItem("Jobs Stopped", page.Url.To("/jobs/stopped"))
+            JobsSidebarMenu.Items.Add(page => new MenuItem("已停止作业", page.Url.To("/jobs/stopped"))
             {
                 Active = page.RequestPath.StartsWith("/jobs/stopped"),
                 Metric = TagDashboardMetrics.JobsStoppedCount,

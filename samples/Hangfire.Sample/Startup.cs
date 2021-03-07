@@ -35,7 +35,7 @@ namespace Hangfire.JobExtensions
             });
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
 
 
 
@@ -43,6 +43,7 @@ namespace Hangfire.JobExtensions
                                                  .UseLiteDbStorage(Configuration.GetConnectionString("HangfireConnection"))
                                                  .UseRecurringJobAdmin(true, typeof(Startup).Assembly));
             services.AddHangfireServer();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,7 +70,12 @@ namespace Hangfire.JobExtensions
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseMvc();
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+            });
+            // app.UseMvc();
         }
     }
 }
